@@ -21,25 +21,25 @@ public class UserRepo {
 
     public ArrayList<User> get(){
         String url = "jdbc:sqlite:my.db"; //LOCATION OF database
-        var resultList = new ArrayList<User>(); // prepare a box
+        var resultList = new ArrayList<User>(); 
         try (var conn = DriverManager.getConnection(url)) {
             if (conn != null) {
-                var statement = conn.createStatement(); //Create action what to do
+                var statement = conn.createStatement(); 
                 var result = statement.executeQuery("SELECT id, name FROM people");
-                //DIFFERENT BOX, but more abstract
+                
 
-                while(result.next()){ //going through abstract box
-                    var user = new User(); //Create new user
+                while(result.next()){ 
+                    var user = new User(); 
                     user.id = result.getInt("id");
                     user.name = result.getString("name");;
-                    resultList.add(user); //Add user to the box
-                } //While loop stops when there is no next element
+                    resultList.add(user); 
+                } 
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
 
-        return resultList; //Return all the users assigned to the box
+        return resultList; 
     }
 
     public void update(User user){
@@ -69,11 +69,3 @@ public class UserRepo {
 }
 
 
-//UpdateUserDTO contains userId
-//User contains only Name
-//Our mission is to add the userId to the User class
-// 1. Add int Id to the User class
-// 2. Replace UpdateUserDTO usage by just User class
-// 3. Delete UpdateUserDTO
-// 4. Remove the unnecessary ids that came from UpdateUserDTO
-// 5. Update the Get method with Id
