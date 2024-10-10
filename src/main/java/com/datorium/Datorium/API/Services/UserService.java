@@ -27,7 +27,7 @@ public class UserService {
 
     public User update(User user){
         userRepo.update(user);
-        return user; //TODO: THIS IS A HACK, we should remove this
+        return user; 
     }
 
     public void delete(int id){
