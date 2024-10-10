@@ -1,5 +1,6 @@
 package com.datorium.Datorium.API.DTOs;
 
-public class Cheese {
+public class User {
+    public int id;
     public String name;
 }
